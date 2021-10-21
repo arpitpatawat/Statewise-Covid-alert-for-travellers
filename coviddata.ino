@@ -1,7 +1,8 @@
 #include <ESP8266WiFi.h>        //Use ESP8266 functions                                              
 #include <ESP8266HTTPClient.h>
 #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
-
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27,16,2);
   
   const char* ssid = "i";              //WIFI SSID Name                             
   const char* password = "12345678";        //WIFI Password
@@ -33,6 +34,9 @@
     }                                                   
     Serial.println("Connected to the WiFi network");   //Display feedback on the serial monitor                                        
     Serial.println(WiFi.localIP());
+    lcd.begin();                      // initialize the lcd Print a message to the LCD.
+    lcd.backlight();
+    Serial.println("LCD is ready");
   }
 
 void data(String url){
@@ -89,11 +93,54 @@ void data(String url){
       }
   }
 
+void display_data(){
+  lcd.setCursor(0, 0); // lcd.home();
+  lcd.print(State);
+  lcd.setCursor(0,1);
+  lcd.print("Total:");
+  lcd.setCursor(6,1);
+  lcd.print(Cases);
+  delay(2000);
+  lcd.clear();
+  lcd.setCursor(0, 0);// lcd.home();
+  lcd.print(State);
+  lcd.setCursor(0,1);
+  lcd.print("Recovr:");
+  lcd.setCursor(7,1);
+  lcd.print(Recovered);
+  delay(2000);
+lcd.clear();
+  lcd.setCursor(0, 0); // lcd.home();
+  lcd.print(State);
+  lcd.setCursor(0,1);
+  lcd.print("Active:");
+  lcd.setCursor(7,1);
+  lcd.print(Active);
+  delay(2000);
+lcd.clear();
+  lcd.setCursor(0, 0); // lcd.home();
+  lcd.print(State);
+  lcd.setCursor(0,1);
+  lcd.print("Deaths:");
+  lcd.setCursor(6,1);
+  lcd.print(Deaths);
+  delay(2000);
+  }
 
 void loop() {
     data(url1);
+    display_data();
+    lcd.clear();
     data(url2);
+    display_data();
+    lcd.clear();
     data(url3);
+    display_data();
+    lcd.clear();
     data(url4);
+    display_data();
+    lcd.clear();
     data(url5);
+    display_data();
+    lcd.clear();
 }

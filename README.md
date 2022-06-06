@@ -58,4 +58,7 @@ turns on when the distance is less than 6-feet.
 <!-- ![tinkercad circuit](https://user-images.githubusercontent.com/75129076/171164230-29c7377f-858c-4969-8b80-7c2936025726.png) -->
 ![image](https://user-images.githubusercontent.com/75129076/171165856-d2812a8e-1267-4765-9169-80975d028f14.png)
 
+## [Simulation at Tinkercad](https://www.tinkercad.com/things/gligwDlHKiF)
+
+## Video link
 Video of the project is uploaded [Here](https://drive.google.com/file/d/1YIlVdw47IWR-8FAu77oOAwTqqlZucJhr/view?usp=sharing)
